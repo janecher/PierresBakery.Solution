@@ -35,6 +35,14 @@ namespace PierresBakery.Tests
     }
 
     [TestMethod]
+    public void CalculateTotalCost_CalculateBreadOrderCost_Integer()
+    {
+      Bread bread1 = new Bread("multigrain", 7, 5);
+      Bread bread2 = new Bread("white", 1, 4);
+      Assert.AreEqual(29, Bread.CalculateTotalCost());
+    }
+
+    [TestMethod]
     public void GetBreadOrder_ReturnsEmptyList_BreadList()
     {
       List<Bread> newList = new List<Bread> { };

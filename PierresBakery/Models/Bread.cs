@@ -22,7 +22,7 @@ namespace PierresBakery.Models
       return (Number / 3 * 2 + Number % 3) * Price;
     }
 
-    public int CalculateTotalCost()
+    public static int CalculateTotalCost()
     {
       int totalPrice = 0;
       foreach(Bread bread in _order)
