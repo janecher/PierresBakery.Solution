@@ -23,10 +23,11 @@ This application calculate the cost of order in Pierre's Bakery.
 
 | Behavior | Input | Output|
 |----------|-------|-------|
-| Create Bread class instance by calling constructor method | Bread bread = new Bread(); | bread.GetType() = Bread |
-| Create Pastry class instance by calling constructor method | Pastry pastry = new Pastry(); | pastry.GetType() = Pastry |
+| Create Bread class instance by calling constructor method | Bread bread = new Bread("multigrain", 7, 5); | bread.GetType() = Bread |
+| Create Pastry class instance by calling constructor method | Pastry pastry = new Pastry("croissant", 3, 3); | pastry.GetType() = Pastry |
 | Calculate total cost of Bread order (Buy2, get 1 free) | 3 | $10 |
 | Calculate total cost of Pastry order (Buy 1 for $2 or 3 for $5) | 2 | $4 |
+| Calculate total cost of order | 2 multigrain bread and 1 tart | $14 |
 
 ## Known Bugs
 
