@@ -14,10 +14,17 @@ namespace PierresBakery.Tests
     }
 
     [TestMethod]
-    public void CalculateCost_CalculateBreadOrderCost_Integer()
+    public void CalculateCost_CalculateThreeBreadOrderCost_Integer()
     {
       Bread bread = new Bread(3);
       Assert.AreEqual(10, bread.CalculateCost());
+    }
+
+    [TestMethod]
+    public void CalculateCost_CalculateSevenBreadOrderCost_Integer()
+    {
+      Bread bread = new Bread(7);
+      Assert.AreEqual(25, bread.CalculateCost());
     }
   }
 }
