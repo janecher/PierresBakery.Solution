@@ -1,18 +1,24 @@
+//using System.Collections.Generic;
+
 namespace PierresBakery.Models
 {
   public class Bread
   {
-    public int Order {get; set;}
-    public const int oneBreadCost = 5;
+    //public Dictionary<string, int> breadChoices = new Dictionary<string, int>(){{"white", 2}, {"sordugth", 2}, {"multigrain", 3}, {"gluten-free", 3}};
+    public string Name {get; set;}
+    public int Number {get; set;}
+    public int Price {get; set;}
 
-    public Bread(int order)
+    public Bread(string name, int number, int price)
     {
-      Order = order;
+      Name = name;
+      Number = number;
+      Price = price;
     }
 
     public int CalculateCost()
     {
-      return Order / 3 * 2 * oneBreadCost + Order % 3 * oneBreadCost;
+      return (Number / 3 * 2 + Number % 3) * Price;
     }
   }
 }

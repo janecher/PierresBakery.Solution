@@ -2,16 +2,20 @@ namespace PierresBakery.Models
 {
   public class Pastry
   {
-    public int Order {get; set;}
+    public string Name {get; set;}
+    public int Number {get; set;}
+    public int Price {get; set;}
 
-    public Pastry(int order)
+    public Pastry(string name, int number, int price)
     {
-      Order = order;
+      Name = name;
+      Number = number;
+      Price = price;
     }
 
     public int CalculateCost()
     {
-      return Order / 3 * 5 + Order % 3 * 2;
+      return Number / 3 * (Price * 2 + 1) + Number % 3 * Price;
     }
   }
 }
