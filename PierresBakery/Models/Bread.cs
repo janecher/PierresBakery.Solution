@@ -4,7 +4,6 @@ namespace PierresBakery.Models
 {
   public class Bread
   {
-    //public Dictionary<string, int> breadChoices = new Dictionary<string, int>(){{"white", 2}, {"sordugth", 2}, {"multigrain", 3}, {"gluten-free", 3}};
     public string Name {get; set;}
     public int Number {get; set;}
     public int Price {get; set;}
