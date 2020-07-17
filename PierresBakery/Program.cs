@@ -25,7 +25,7 @@ class Program
       {
         Bread breadOrder = new Bread("multigrain", breadLoaves, 5);
         Pastry pastryOrder = new Pastry("croissant", pastryNumber, 2);
-        Console.WriteLine("Price for your order is $" + (breadOrder.CalculateCost() + pastryOrder.CalculateCost()));
+        Console.WriteLine("Price for your order is $" + (breadOrder.CalculateBreadCost() + pastryOrder.CalculateCost()));
       }
       else
       {
