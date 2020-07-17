@@ -8,5 +8,10 @@ namespace PierresBakery.Models
     {
       Order = order;
     }
+
+    public int CalculateCost()
+    {
+      return Order / 3 * 5 + Order % 3 * 2;
+    }
   }
 }
