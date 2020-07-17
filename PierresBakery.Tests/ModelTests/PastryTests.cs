@@ -7,10 +7,10 @@ namespace PierresBakery.Tests
   public class PastryTests
   {
     [TestMethod]
-    public void NameOfMethodWeAreTesting_DescriptionOfBehavior_ExpectedReturnValue()
+    public void PastryConstructor_CreatesInstanceOfPastry_Pastry()
     {
-      // any necessary logic to prep for test; instantiating new classes, etc.
-      //Assert.AreEqual(EXPECTED RESULT, CODE TO TEST);
+      Pastry pastry = new Pastry(3);
+      Assert.AreEqual(typeof(Pastry), pastry.GetType());
     }
   }
 }
