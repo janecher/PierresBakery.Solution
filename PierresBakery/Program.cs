@@ -9,55 +9,36 @@ class Program
     Console.WriteLine("We have delicios products and nice prices!\n");
     Console.WriteLine("You can order bread loaves for buy 2, get 1 free! A single loaf costs depends on bread choice");
     Console.WriteLine("And you can order pastries for buy 2, get 1 for only $1! A single pastry costs depends on pastry choice\n");
+    Console.WriteLine("Would you like to order bread? Y/N");
     GetBreadOrder();
+    Console.WriteLine("Would you like to order pastry? Y/N");
     GetPastryOrder();
-    Console.WriteLine("\nYou ordered: " + BreadOrderInfo() + PastryOrderInfo());
+    Console.WriteLine("\nYou ordered: " + GetOrderInfo());
     Console.WriteLine("Total price of your order is: $" + (Bread.CalculateTotalCost() + Pastry.CalculateTotalCost()));
   }
 
-  public static string BreadOrderInfo()
+  public static string GetOrderInfo()
   {
     string info = "";
     foreach(Bread bread in Bread.GetBreadOrder())
     {
-      info += bread.Number + " " + bread.Name + " bread, ";
+      info += bread.Number + " " + bread.Name + " bread ";
+    }
+    foreach(Pastry pastry in Pastry.GetPastryOrder())
+    {
+      info += pastry.Number + " " + pastry.Name;
     }
     return info;
   }  
-
-  public static string PastryOrderInfo()
-  {
-    string info = "";
-    foreach(Pastry pastry in Pastry.GetPastryOrder())
-    {
-      info += " " + pastry.Number + " " + pastry.Name;
-    }
-    return info;
-  }
-
+  
   public static void GetBreadOrder()
   {
-    Console.WriteLine("Would you like to order bread? Y/N");
     string answer = Console.ReadLine().Trim();
     if(answer == "Y" || answer == "y")
     {
       AddBread();
-      AddMoreBread();
-    }
-    else
-    {
-      return;
-    }
-  }
-
-  public static void AddMoreBread()
-  {
-    Console.WriteLine("Would you like to add more bread to your order? Y/N");
-    string addBreadAnswer = Console.ReadLine().Trim();
-    if(addBreadAnswer == "Y" || addBreadAnswer == "y")
-    {
-      AddBread();
-      AddMoreBread();
+      Console.WriteLine("Would you like to add more bread to your order? Y/N");
+      GetBreadOrder();
     }
     else
     {
@@ -92,27 +73,12 @@ class Program
 
   public static void GetPastryOrder()
   {
-    Console.WriteLine("Would you like to order pastry? Y/N");
     string answer = Console.ReadLine().Trim();
     if(answer == "Y" || answer == "y")
     {
       AddPastry();
-      AddMorePastry();
-    }
-    else
-    {
-      return;
-    }
-  }
-
-  public static void AddMorePastry()
-  {
-    Console.WriteLine("Would you like to add more pastry to your order? Y/N");
-    string addPastryAnswer = Console.ReadLine().Trim();
-    if(addPastryAnswer == "Y" || addPastryAnswer == "y")
-    {
-      AddPastry();
-      AddMorePastry();
+      Console.WriteLine("Would you like to add more pastry to your order? Y/N");
+      GetPastryOrder();
     }
     else
     {
@@ -147,7 +113,6 @@ class Program
 
   public static int ItemsGetter()
   {
-    //Bug after inputiing incorrect number, and then correct
     Console.WriteLine("\nHow many items would you like to get?");
     string numberInput = Console.ReadLine();
     int number;
