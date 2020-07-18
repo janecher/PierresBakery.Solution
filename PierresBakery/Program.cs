@@ -30,7 +30,7 @@ class Program
     string info = "";
     foreach(Pastry pastry in Pastry.GetPastryOrder())
     {
-      info += pastry.Number + " " + pastry.Name;
+      info += " " + pastry.Number + " " + pastry.Name;
     }
     return info;
   }
@@ -42,16 +42,22 @@ class Program
     if(answer == "Y" || answer == "y")
     {
       AddBread();
-      Console.WriteLine("Would you like to add more breads to your order? Y/N");
-      string addBreadAnswer = Console.ReadLine().Trim();
-      if(answer == "Y" || answer == "y")
-      {
-        AddBread();
-      }
-      else
-      {
-        return;
-      }
+      AddMoreBread();
+    }
+    else
+    {
+      return;
+    }
+  }
+
+  public static void AddMoreBread()
+  {
+    Console.WriteLine("Would you like to add more bread to your order? Y/N");
+    string addBreadAnswer = Console.ReadLine().Trim();
+    if(addBreadAnswer == "Y" || addBreadAnswer == "y")
+    {
+      AddBread();
+      AddMoreBread();
     }
     else
     {
@@ -71,14 +77,17 @@ class Program
     if(!breadTypes.ContainsKey(breadInput))
     {
       Console.WriteLine("\nSorry, we don't have that type of bread");
-      AddBread();
+      return AddBread();
     }
-    int number = ItemsGetter();
-    while(number == -1 )
+    else
     {
-      number = ItemsGetter();
+      int number = ItemsGetter();
+      while(number == -1)
+      {
+        number = ItemsGetter();
+      }
+      return new Bread(breadInput, number, breadTypes[breadInput]);
     }
-    return new Bread(breadInput, number, breadTypes[breadInput]);
   }
 
   public static void GetPastryOrder()
@@ -88,16 +97,22 @@ class Program
     if(answer == "Y" || answer == "y")
     {
       AddPastry();
-      Console.WriteLine("Would you like to add more pastry to your order? Y/N");
-      string addBreadAnswer = Console.ReadLine().Trim();
-      if(answer == "Y" || answer == "y")
-      {
-        AddPastry();
-      }
-      else
-      {
-        return;
-      }
+      AddMorePastry();
+    }
+    else
+    {
+      return;
+    }
+  }
+
+  public static void AddMorePastry()
+  {
+    Console.WriteLine("Would you like to add more pastry to your order? Y/N");
+    string addPastryAnswer = Console.ReadLine().Trim();
+    if(addPastryAnswer == "Y" || addPastryAnswer == "y")
+    {
+      AddPastry();
+      AddMorePastry();
     }
     else
     {
@@ -117,33 +132,22 @@ class Program
     if(!pastryTypes.ContainsKey(pastryInput))
     {
       Console.WriteLine("\nSorry, we don't have that type of pastry");
-      AddPastry();
-    }
-    int number = ItemsGetter();
-    while(number == -1 )
-    {
-      number = ItemsGetter();
-    }
-    return new Pastry(pastryInput, number, pastryTypes[pastryInput]);   
-  }
-
-  public static void AddMorePastry()
-  {
-    Console.WriteLine("Would you like to add more pastries to your order? Y/N");
-    string answer = Console.ReadLine();
-    if(answer == "Y")
-    {
-      GetBreadOrder();
+      return AddPastry();
     }
     else
     {
-      Console.WriteLine("Thank you, now you can choose the pastries");
-      GetPastryOrder();
-    }
+      int number = ItemsGetter();
+      while(number == -1 )
+      {
+        number = ItemsGetter();
+      }
+      return new Pastry(pastryInput, number, pastryTypes[pastryInput]);
+    } 
   }
 
   public static int ItemsGetter()
   {
+    //Bug after inputiing incorrect number, and then correct
     Console.WriteLine("\nHow many items would you like to get?");
     string numberInput = Console.ReadLine();
     int number;
